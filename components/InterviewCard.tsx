@@ -10,7 +10,7 @@ import { cn, getRandomInterviewCover } from "@/lib/utils";
 
 const InterviewCard = async ({
   interviewId,
-  userId,
+  // userId,
   role,
   type,
   techstack,
@@ -79,14 +79,16 @@ const InterviewCard = async ({
 
             <div className="flex flex-row gap-2 items-center">
               <Image src="/star.svg" width={22} height={22} alt="star" />
-              <p>{feedback?.totalScore || "---"}/100</p>
+              {/* <p>{feedback?.totalScore || "---"}/100</p> */}
             </div>
           </div>
 
           {/* Feedback or Placeholder Text */}
           <p className="line-clamp-2 mt-5">
-            {feedback?.finalAssessment ||
-              "You haven't taken this interview yet. Take it now to improve your skills."}
+            {/* {feedback?.finalAssessment || */}
+            You haven&apos;t taken this interview yet. Take it now to improve
+            your skills.
+            {/* } */}
           </p>
         </div>
 
