@@ -6,25 +6,23 @@ import { Button } from "./ui/button";
 import DisplayTechIcons from "./DisplayTechIcons";
 
 import { cn, getRandomInterviewCover } from "@/lib/utils";
-// import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
+import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
 const InterviewCard = async ({
   interviewId,
-  // userId,
+  userId,
   role,
   type,
   techstack,
   createdAt,
 }: InterviewCardProps) => {
-  // const feedback =
-  //   userId && interviewId
-  //     ? await getFeedbackByInterviewId({
-  //         interviewId,
-  //         userId,
-  //       })
-  //     : null;
-
-  const feedback = null;
+  const feedback =
+    userId && interviewId
+      ? await getFeedbackByInterviewId({
+          interviewId,
+          userId,
+        })
+      : null;
 
   const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
 
@@ -79,16 +77,14 @@ const InterviewCard = async ({
 
             <div className="flex flex-row gap-2 items-center">
               <Image src="/star.svg" width={22} height={22} alt="star" />
-              {/* <p>{feedback?.totalScore || "---"}/100</p> */}
+              <p>{feedback?.totalScore || "---"}/100</p>
             </div>
           </div>
 
           {/* Feedback or Placeholder Text */}
           <p className="line-clamp-2 mt-5">
-            {/* {feedback?.finalAssessment || */}
-            You haven&apos;t taken this interview yet. Take it now to improve
-            your skills.
-            {/* } */}
+            {feedback?.finalAssessment} || You haven&apos;t taken this interview
+            yet. Take it now to improve your skills.
           </p>
         </div>
 
